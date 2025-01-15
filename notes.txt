@@ -1,0 +1,1 @@
+Pricing information for hosting on off-nets; drop-down with standard configuration; there should be reasoning behind the assumptions and steps taken.
