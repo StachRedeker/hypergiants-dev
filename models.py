@@ -15,6 +15,9 @@ class SimulationParameters:
     hardware_life_cycle_years: int = 5          # New
     transfer_link_cost_per_gbps: float = 0.0
     sla_percentage: float = 0.0
+    off_net_traffic_percentage: float = 100.0
+    use_aws_bandwidth_pricing: bool = False  # Switch for AWS pricing
+    use_tweakers_estimates: bool = False  # Switch for Tweakers estimates
 
 @dataclass
 class SimulationResults:

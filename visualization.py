@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 def display_results(results, compute_mode):
-    st.subheader("Results Overview")
+    st.subheader("Final Outcome")
     st.write(results.final_recommendation)
 
     # Plot cumulative costs (On-Net vs Off-Net)
@@ -17,13 +17,13 @@ def display_results(results, compute_mode):
 
         with col1:
             st.metric(label="Required Bandwidth (Gbps)", 
-                      value=f"{results.required_bandwidth_gbps:.2f}")
+                      value=f"{results.required_bandwidth_gbps:.6f}")
         with col2:
             st.metric(label="Transfer Link Cost ($/Month)", 
-                      value=f"${results.aws_transfer_link_cost:.2f}")
+                      value=f"${results.aws_transfer_link_cost:.6f}")
 
     # User, Requests, and Data Volume Metrics
-    st.subheader("Daily Metrics Over Time")
+    st.subheader("User-Based Metrics Over Time")
     col1, col2, col3 = st.columns(3)
 
     with col1:
@@ -44,8 +44,3 @@ def display_results(results, compute_mode):
     # Display full data table
     st.subheader("Detailed Data Table")
     st.dataframe(results.timeline)
-
-    # Highlight recommendations and summary metrics
-    st.subheader("Key Metrics Summary")
-    st.write(f"Total On-Net Cost: ${results.timeline['On-Net Cost'].iloc[-1]:,}")
-    st.write(f"Total Off-Net Cost: ${results.timeline['Off-Net Cost'].iloc[-1]:,}")
