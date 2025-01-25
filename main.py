@@ -22,7 +22,7 @@ def main():
         )
 
     datasets = load_and_prepare_datasets()
-    dataset_names = ["2015 Q1 - Canvas Network", "2015 Q2 - Canvas Network", "2015 Q3 - Canvas Network"]
+    dataset_names = ["2012 Q3 - Harvard/MIT", "2012 Q4 - Harvard/MIT", "2013 Q1 - Harvard/MIT", "2013 Q2 - Harvard/MIT", "2013 Q3 - Harvard/MIT", "2015 Q1 - Canvas Network", "2015 Q2 - Canvas Network", "2015 Q3 - Canvas Network"]
 
     st.sidebar.title("Configuration Parameters")
 
