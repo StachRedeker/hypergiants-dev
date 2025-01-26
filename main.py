@@ -29,7 +29,7 @@ def main():
     st.sidebar.header("Perspective")
     compute_mode = st.sidebar.radio("Select for whom you are interested in computing the costs.", options=["AWS", "Canvas"], index=1)
 
-    st.sidebar.caption("The `AWS` case solves for the costs occurred by AWS and by the students' ISPs. The `Canvas` case solves an arguably more relevant problem for the costs occurred by Canvas and the University of Twente. We ignore the ISPs costs here.")
+    st.sidebar.caption("The `AWS` case solves for the costs occurred by AWS and by the students' ISPs. The `Canvas` case solves an arguably more relevant problem for the costs occurred by Canvas and the University of Twente. We ignore the ISPs' costs here.")
 
     st.sidebar.header("Short-cuts")
 
@@ -53,7 +53,7 @@ def main():
 
     st.sidebar.header("Simulation time")
     time_horizon = st.sidebar.number_input("Time Horizon (days)", value=3650, min_value=1)
-    st.sidebar.caption("10 years by default. If you want to see the user patterns in detail, pick a smaller number, e.g. 30 days.")
+    st.sidebar.caption("10 years by default. If you want to see the user patterns in detail, pick a smaller number, e.g., 90 days.")
 
     st.sidebar.header("Hardware")
     upfront_cost_on_net = upfront_cost_off_net = hw_cost_on_net = hw_cost_off_net = 0
@@ -124,7 +124,8 @@ def main():
         simulator = OffNetSimulator(params, selected_dataset)
         results = simulator.run_simulation(compute_aws=(compute_mode == "AWS"))
 
-        visualization.display_results(results, compute_mode)
+        views_per_day_for_tweakers = avg_page_views_per_user_per_day * avg_num_users
+        visualization.display_results(results, compute_mode, use_tweakers_estimates, views_per_day_for_tweakers)
 
 if __name__ == "__main__":
     main()
